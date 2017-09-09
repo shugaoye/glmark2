@@ -22,17 +22,14 @@ LOCAL_C_INCLUDES := external/zlib
 
 include $(BUILD_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := libglmark2-jpeg
-LOCAL_CFLAGS := -Werror -Wall -Wextra -Wno-error=attributes \
-                -Wno-error=unused-parameter -Wno-error=unused-function -Wno-error=unused-variable
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/libjpeg-turbo/
-LOCAL_SRC_FILES := $(subst $(LOCAL_PATH)/,,$(wildcard $(LOCAL_PATH)/src/libjpeg-turbo/simd/*.c)) \
-                   $(subst $(LOCAL_PATH)/,,$(wildcard $(LOCAL_PATH)/src/libjpeg-turbo/simd/*.S)) \
-                   $(subst $(LOCAL_PATH)/,,$(wildcard $(LOCAL_PATH)/src/libjpeg-turbo/*.c))
-
-include $(BUILD_STATIC_LIBRARY)
+#
+# Removed libglmark2-jpeg and moved to glmark2/libglmark2-jpeg
+# In Android 6 and earlier versions, external/jpeg is used.
+# From Android 7 and above, external/libjpeg-turbo is used.
+# There are conflicts between jpeg and libjpeg-turbo, to use libjpeg-turbo
+# in Android 6 and earlier versions, we use libglmark2-jpeg. In Android 7
+# or above, external/libjpeg-turbo can be used.
+#
 
 include $(CLEAR_VARS)
 

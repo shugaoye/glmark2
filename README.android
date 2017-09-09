@@ -1,3 +1,9 @@
+Build glmark2 on Android 5.1
+============================
+Updated glmark2 to build on Android 5.1. Added libglmark2-jpeg which is copied from
+libjpeg-turbo from Android 7. Since external/jpeg is used in Android 5, we cannot
+use libjpeg-turbo directly.
+
 Command-line arguments
 ======================
 
