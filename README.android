@@ -1,3 +1,8 @@
+Build glmark2 using old SDK with Eclipse/ADT
+============================
+NDK version: android-ndk-r12
+Added APP_ABI := x86_64 in Application.mk to build for x86_64.
+
 Build glmark2 on Android 5.1
 ============================
 Updated glmark2 to build on Android 5.1. Added libglmark2-jpeg which is copied from
