@@ -126,6 +126,23 @@ ifneq (,$(TARGET_BUILD_APPS))
   LOCAL_SDK_VERSION := 17
 endif
 
+ifeq ($(strip $(TARGET_ARCH)),arm64-v8a)
+    LOCAL_CFLAGS += -D__ARM_HAVE_NEON__
+    LOCAL_SRC_FILES += $(LOCAL_SRC_FILES_arm64)
+    LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/libglmark2-jpeg
+endif
+
+ifeq ($(strip $(TARGET_ARCH)),arm)
+    LOCAL_SRC_FILES += $(LOCAL_SRC_FILES_arm)
+    LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/libglmark2-jpeg
+endif
+
+ifeq ($(strip $(TARGET_ARCH)),x86)
+    LOCAL_ASMFLAGS += $(LOCAL_ASFLAGS_x86)
+    LOCAL_SRC_FILES += $(LOCAL_SRC_FILES_x86)
+    LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/libglmark2-jpeg $(LOCAL_C_INCLUDES_x86)
+endif
+
 ifeq ($(strip $(TARGET_ARCH)),x86_64)
     LOCAL_ASMFLAGS += $(LOCAL_ASFLAGS_x86_64)
     LOCAL_SRC_FILES += $(LOCAL_SRC_FILES_x86_64)
